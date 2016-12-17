@@ -11,28 +11,31 @@ namespace dynamic_value
 	public:
 		template <typename T>
 		explicit DynamicValue(const T &value)
+			: _type(typeid(value))
 		{
-			_type = typeid(value);
 			_value = ::operator new(sizeof(T));
+			_data_size = sizeof(T);
 			std::memcpy(_value, &value, sizeof(T));
 		}
 
 		template <typename T>
 		bool is_type_of() const
 		{
-			return typeid(T) == _type;
+			return std::type_index(typeid(T)) == _type;
 		}
 
 		template <typename T>
-		T convert()
+		T& get()
 		{
-
+			return *static_cast<T*>(_value);
 		}
 
+		const std::type_index& type() const { return _type; }
+
 	private:
-		std::type_info _type;
+		std::type_index _type;
 		void *_value;
-		unsigned _data_size;
+		size_t _data_size;
 	};
 }
 

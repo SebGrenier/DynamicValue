@@ -1,1 +1,4 @@
 *.db
+DynamicValue/x64/
+DynamicValue/.vs/
+*.user

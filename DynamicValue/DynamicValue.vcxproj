@@ -111,9 +111,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="dynamic_value.h" />
+    <ClInclude Include="type_wrapper.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dynamic_value.cpp" />
+    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
